@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <title>Estudo 1 - Inserindo uma lista dinâmicamente</title>
+</head>
+<body>
+
+    <div class="container" ng-app="myApp">
+        <div ng-controller="myCtrl">
+        <div class="container2">
+            <input class="entrada" type="text" ng-model="toDoList">
+            <button ng-click="addToDoList()">Adicionar</button>
+        </div>
+          
+    
+          <div ng-repeat="item in list">
+              <li>{{item}}</li>
+          </div>
+          
+        </div>
+    </div>
+    
+    
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', ['$scope', function ($scope){
+            $scope.list = [];
+            
+            $scope.addToDoList = function(){
+                $scope.list.push($scope.toDoList);
+                $scope.toDoList = "";
+            }
+        
+    }]);
+    
+    </script>
+    </body>
+</html>
